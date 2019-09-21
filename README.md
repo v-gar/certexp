@@ -18,7 +18,7 @@ Then run certexp:
 bin/certexp domainlist.txt
 ```
 
-The output will be:
+The output looks like this:
 
 ```
 Domain: v-gar.de
@@ -63,3 +63,7 @@ make install
 ```
 
 The binary will be copied/installed to the ./bin/ dir.
+
+## License
+
+The code is licensed under the MIT license. See COPYING.

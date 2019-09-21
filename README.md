@@ -57,6 +57,7 @@ Compilation is easy: go to this source code directory and do:
 
 ```
 mkdir build
+cd build
 cmake ..
 make
 make install

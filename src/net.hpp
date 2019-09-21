@@ -52,7 +52,7 @@ struct fetch_result fetch(std::string domain);
  * @param domain: domain to be called (e.g. example.com)
  * @returns URL (e.g. https://example.com/)
  */
-const char *convert_hostname_to_url(std::string domain);
+char *convert_hostname_to_url(std::string domain);
 
 static size_t write_function(void *ptr, size_t size,
                              size_t nmemb, void *stream)

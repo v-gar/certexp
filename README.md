@@ -18,6 +18,26 @@ Then run certexp:
 bin/certexp domainlist.txt
 ```
 
+The output will be:
+
+```
+Domain: v-gar.de
+Expire date: Sun Dec  2 06:35:01 2019
+ (expires in 71 days)
+ (SAN: v-gar.de)
+Expire date: Sun Dec  2 06:35:01 2019
+ (expires in 71 days)
+ (SAN: *.v-gar.de)
+
+Domain: vgapps.de
+Expire date: Sun Dec  6 07:55:27 2019
+ (expires in 75 days)
+ (SAN: www.vgapps.de)
+Expire date: Sun Dec  6 07:55:27 2019
+ (expires in 75 days)
+ (SAN: vgapps.de)
+```
+
 ### Compile and install
 This software is written in C++ (C++17 standard) and uses libcurl.
 

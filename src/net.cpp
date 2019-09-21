@@ -6,6 +6,11 @@ struct fetch_result fetch(string domain)
 {
     struct fetch_result result{};
 
+    // License notice: this code was adapted
+    // from https://curl.haxx.se/libcurl/c/certinfo.html
+    // 
+    // The license can be found unter COPYING_CURL
+
     // curl init
     CURL *curl;
     CURLcode res;
@@ -15,7 +20,7 @@ struct fetch_result fetch(string domain)
     curl = curl_easy_init();
     
     if (curl) {
-        const char *url = convert_hostname_to_url(domain); // pointer owner!
+        char *url = convert_hostname_to_url(domain); // pointer owner!
         curl_easy_setopt(curl, CURLOPT_URL, url);
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_function);
  
@@ -60,22 +65,22 @@ struct fetch_result fetch(string domain)
                 result.success = true;
             }
         }
-        delete url;
+        delete[] url;
     }
     
     return result;
 }
 
-const char *convert_hostname_to_url(string domain)
+char *convert_hostname_to_url(string domain)
 {
     // "https://" and "/"
     constexpr unsigned short SIZE_HTTPS = 8;
     constexpr unsigned short SIZE_SLASH = 1;
     constexpr unsigned short SIZE_OVERHEAD = SIZE_HTTPS + SIZE_SLASH;
     
-    const char *url = new char[domain.size() + SIZE_OVERHEAD + 1]();
+    char *url = new char[domain.size() + SIZE_OVERHEAD + 1]();
     // + 1 for null termination
-    char *copy_pointer = (char *) url; // cursor
+    char *copy_pointer = url; // cursor
     
     // protocol
     strncpy(copy_pointer, "https://", SIZE_HTTPS);
